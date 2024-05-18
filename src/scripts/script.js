@@ -16,6 +16,11 @@ const square = () => {
 };
 
 /** FizzBuzz Function */
+/**
+ * 
+ * @param {Number} n 
+ * @returns A side effect
+ */
 const fizzbuzz = (n) => {
     if (Number.isNaN(n)) return 'Ingrese un númera';
     if (n <= 0) return 'Ingrese un número mayor a cero';
@@ -32,7 +37,12 @@ const fizzbuzz = (n) => {
 }
 
 /** Chess Table Function */
-const chessTable = (columns, rows ) => {
+/**
+ * 
+ * @param {Number} columns 
+ * @param {Number} rows 
+ */
+const chessTable = (columns, rows) => {
     let str = '';
     let str2 = '';
     for (let x = 0; x < columns; x++) {
@@ -46,6 +56,11 @@ const chessTable = (columns, rows ) => {
 }
 
 /** Minimun number */
+/**
+ * 
+ * @param {Array} numbers 
+ * @returns Min number of the array
+ */
 const min = (numbers) => {
     if (!numbers || numbers.length < 1) throw new Error('Invalid amount of numbers');
     let min = numbers[0];
@@ -58,6 +73,11 @@ const min = (numbers) => {
 }
 
 /** Pair number without % */
+/**
+ * 
+ * @param {num} num 
+ * @returns True or False 
+ */
 const isEven = (num) => {
     let number = String(num);
     let numberSplitted = [];
@@ -88,6 +108,12 @@ const contarBs = (word) => {
 }
 
 /** Counting any word */
+/**
+ * 
+ * @param {String} word 
+ * @param {String} character 
+ * @returns Counting characters in a word.
+ */
 const contarCaracter = (word, character) => {
     const wordSplit = String(word).split('');
     let CharCounter = 0;
@@ -98,6 +124,76 @@ const contarCaracter = (word, character) => {
     }
     return CharCounter;
 }
+
+/** Range function */
+/**
+ * 
+ * @param {Number} start 
+ * @param {Number} end 
+ * @param {Number} step 
+ * @returns Return an array with all the numbers between start and end. Including the end.
+ */
+const range = (start, end, step) => {
+    let count = start;
+    let range = [];
+    if(step == 0 || step == undefined || step == null) step = 1;
+    if(step < 0) {
+        for (count; count >= end; count = count + step) {
+            range.push(count);
+        }
+    }
+    if(step > 0) {
+        for (count; count <= end; step ? count = count + step : count ++) {
+            range.push(count);
+        }
+    }
+    return range;
+}
+/**
+ * 
+ * @param {Number} numbers 
+ * @returns The sum of all of numbers of the array.
+ */
+const sum = (numbers) => {
+    let accumalator = 0;
+    for (let i = 0; i < numbers.length; i++) {
+        accumalator += numbers[i]
+    }
+    return accumalator;
+}
+
+/**Reverse array with & without mutation */
+/**
+ * 
+ * @param {Array} array 
+ * @returns A new array with the content of the input reversed.
+ */
+const reverseArray = (array) => {
+    let reverseArray = [];
+    for(let i = array.length - 1; i >= 0; i--){
+        reverseArray.push(array[i]);
+    }
+    return reverseArray;
+}
+/**
+ * 
+ * @param {Array} array 
+ * @returns 
+ */
+
+const reverseArrayInPlace = (array) => {
+    const length = array.length - 1;
+    for(let i = array.length - 1; i >= 0; i--){
+        array.push(array[i]);
+    }
+    for(let k = 0;  k <= length; k++){
+        array.shift();
+    }
+    console.log(array);
+}
+// reverse ArrayInPlace is slower, testing with 5 elements array.
+
+/** */
 
 export {
     square
