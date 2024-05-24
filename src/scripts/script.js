@@ -136,14 +136,14 @@ const contarCaracter = (word, character) => {
 const range = (start, end, step) => {
     let count = start;
     let range = [];
-    if(step == 0 || step == undefined || step == null) step = 1;
-    if(step < 0) {
+    if (step == 0 || step == undefined || step == null) step = 1;
+    if (step < 0) {
         for (count; count >= end; count = count + step) {
             range.push(count);
         }
     }
-    if(step > 0) {
-        for (count; count <= end; step ? count = count + step : count ++) {
+    if (step > 0) {
+        for (count; count <= end; step ? count = count + step : count++) {
             range.push(count);
         }
     }
@@ -170,7 +170,7 @@ const sum = (numbers) => {
  */
 const reverseArray = (array) => {
     let reverseArray = [];
-    for(let i = array.length - 1; i >= 0; i--){
+    for (let i = array.length - 1; i >= 0; i--) {
         reverseArray.push(array[i]);
     }
     return reverseArray;
@@ -183,18 +183,65 @@ const reverseArray = (array) => {
 
 const reverseArrayInPlace = (array) => {
     const length = array.length - 1;
-    for(let i = array.length - 1; i >= 0; i--){
+    for (let i = array.length - 1; i >= 0; i--) {
         array.push(array[i]);
     }
-    for(let k = 0;  k <= length; k++){
+    for (let k = 0; k <= length; k++) {
         array.shift();
     }
     console.log(array);
 }
 // reverse ArrayInPlace is slower, testing with 5 elements array.
 
-/** */
-
+/**Converts an array to a list */
+/**
+ * 
+ * @param {*} array 
+ * @returns
+ */
+const ATL = (arr) => {
+    for (let i = 0; i < arr.length; i++) {
+        const list = { value: '', rest: '' };
+        list.value = arr[i];
+        list.rest = ATL(arr.slice(i + 1));
+        return list;
+    }
+}
+/** 
+ * List to array
+ */
+/**
+ * 
+ * @param {Object} list 
+ * @returns an Array of the values.
+ */
+const LTA = (list) => {
+    const array = [];
+    function LTAFUN(list, array) {
+        array.push(list.value);
+        if (list.rest) LTAFUN(list.rest, array);
+        return array;
+    }
+    array.push(list.value)
+    return list.rest ? LTAFUN(list.rest, array) : array;
+}
+/**
+ * Prepend aux func
+ */
+/**
+ * 
+ * @param {String} element 
+ * @param {Object} list 
+ * @returns A new list with the element firts
+ */
+const prepend = (element, list) => {
+    const newList = { value: element, rest: list };
+    return newList;
+}
+const nth = (num, list) => {
+    if (num == 0) return list.value;
+    return nth(num - 1, list.rest);
+}
 export {
     square
 }
