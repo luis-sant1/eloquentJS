@@ -242,6 +242,30 @@ const nth = (num, list) => {
     if (num == 0) return list.value;
     return nth(num - 1, list.rest);
 }
+
+/**
+ * Deep Equal
+ */
+
+const deepEqual = (obj, obj2) => {
+    if(obj === null || obj2 === null) return false;
+    if( typeof obj !== "object" || typeof obj2 !== "object" ) {
+        if( obj === obj2 ) {
+            return true;
+        }else{
+            return false;
+        }
+    }
+    const objArr = Object.keys(obj),  objArr2 = Object.keys(obj2);
+    if(objArr.length == objArr2.length){
+        let acc = 0;
+        for(let i = 0; i < objArr.length; i++) {
+            if(objArr[i] === objArr2[i]) acc ++
+        }
+        if(acc === objArr.length) return true;
+    }
+    return false;
+}
 export {
     square
 }
